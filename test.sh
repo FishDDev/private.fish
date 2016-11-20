@@ -1,6 +1,8 @@
-#!/bin/bash                                                     
+#!/usr/bin/env bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 
-chkinstall_shadowsocks-libev() {
+chkinstall_shadowsocks-libev(){
     if [ -f /usr/local/bin/ss-server ]; then
 #Shadowsocks-libev 已安装提示
         echo "Shadowsocks-libev 已安装"                   
@@ -13,5 +15,5 @@ chkinstall_shadowsocks-libev() {
 }
 
 install_start(){
-    chkinstall_shadowsocks-libev
+   chkinstall_shadowsocks-libev
 }
