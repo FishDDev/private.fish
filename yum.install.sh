@@ -10,9 +10,14 @@ yum install -y libnet libpcap libnet-devel libpcap-devel net-tools python-pip li
 pip install --upgrade -I pip
 pip install -I greenlet gevent
 
+#wget --no-check-certificate https://github.com/FishDDev/tools/archive/Privated.zip
 
-#git clon 
-git clone https://github.com/FishDDev/tools.git
+#get shadowsocks-libev
+rm -rf shadowsocks-libev.sh
+wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/install/shadowsocks-libev.sh
+chmod +x shadowsocks-libev.sh
 
-#set chmod
-chmod -x *
+#get serverspeeder
+rm -rf serverspeeder.sh
+wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/install/serverspeeder.sh
+chmod +x serverspeeder.sh
