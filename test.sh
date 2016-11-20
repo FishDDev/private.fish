@@ -14,6 +14,4 @@ chkinstall_shadowsocks-libev(){
     fi
 }
 
-install_start(){
-   chkinstall_shadowsocks-libev
-}
+chkinstall_shadowsocks-libev
