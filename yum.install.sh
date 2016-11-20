@@ -21,3 +21,7 @@ chmod +x shadowsocks-libev.sh
 rm -rf serverspeeder.sh
 wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/install/serverspeeder.sh
 chmod +x serverspeeder.sh
+
+rm -rf upconfig.sh
+wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/upconfig.sh
+chmod +x upconfig.sh
