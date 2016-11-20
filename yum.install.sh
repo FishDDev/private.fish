@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+
+
 #wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 #rpm -ivh epel-release-X-
 
@@ -34,4 +38,3 @@ yum upgrade
 yum install -y libnet libpcap libnet-devel libpcap-devel net-tools python-pip libevent
 pip install --upgrade -I pip
 pip install -I greenlet gevent
-
