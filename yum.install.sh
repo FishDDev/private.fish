@@ -1,9 +1,13 @@
+#!/bin/sh
 #wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-#rpm -ivh epel-release-X-Y.noarch.rpm
+#rpm -ivh epel-release-X-
 
-#yum upgrade
+chmod +x ./yum.install.sh
+
+#yum
 yum clean all
-yum update upgrade
+yum update 
+yum upgrade
 
 #yum & pip install
 yum install -y libnet libpcap libnet-devel libpcap-devel net-tools python-pip libevent
@@ -25,3 +29,4 @@ chmod +x serverspeeder.sh
 rm -rf upconfig.sh
 wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/upconfig.sh
 chmod +x upconfig.sh
+
