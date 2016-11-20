@@ -4,16 +4,6 @@
 
 chmod +x ./yum.install.sh
 
-#yum
-yum clean all
-yum update 
-yum upgrade
-
-#yum & pip install
-yum install -y libnet libpcap libnet-devel libpcap-devel net-tools python-pip libevent
-pip install --upgrade -I pip
-pip install -I greenlet gevent
-
 #wget --no-check-certificate https://github.com/FishDDev/tools/archive/Privated.zip
 
 #get shadowsocks-libev
@@ -33,3 +23,14 @@ chmod +x upconfig.sh
 rm -rf reload.sh
 wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
 chmod +x reload.sh
+
+
+#yum
+yum clean all
+yum update 
+yum upgrade
+
+#yum & pip install
+yum install -y libnet libpcap libnet-devel libpcap-devel net-tools python-pip libevent
+pip install --upgrade -I pip
+pip install -I greenlet gevent
