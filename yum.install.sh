@@ -30,3 +30,6 @@ rm -rf upconfig.sh
 wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/upconfig.sh
 chmod +x upconfig.sh
 
+rm -rf reload.sh
+wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
+chmod +x reload.sh
