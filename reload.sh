@@ -16,27 +16,22 @@ update_ss_config()
     rm -rf ./config.json
     rm -rf /etc/shadowsocks-libev/
     wget --no-check-certificate ${GITURL}/etc/shadowsocks-libev/config.json &&
-       { mv -vf ./config.json /etc/shadowsocks-libev/config.json && echo "/etc/shadowsocks-libev/config.json 更新成功 " } ||
-       echo "/etc/shadowsocks-libev/config.json 更新失败"
+       { mv -vf ./config.json /etc/shadowsocks-libev/config.json && echo "/etc/shadowsocks-libev/config.json 更新成功 " } || echo "/etc/shadowsocks-libev/config.json 更新失败"
 }
 
 update_local_config()
 {
     rm -rf ./local.conf ; rm -rf /etc/sysctl.d/local.conf
     wget --no-check-certificate ${GITURL}/etc/sysctl.d/local.conf &&
-       { mv -vf ./local.conf /etc/sysctl.d/local.conf && sysctl -p /etc/sysctl.d/local.conf && echo "/etc/sysctl.d/local.conf 更新成功 " } ||
-       echo "/etc/sysctl.d/local.conf 更新失败"
+       { mv -vf ./local.conf /etc/sysctl.d/local.conf && sysctl -p /etc/sysctl.d/local.conf && echo "/etc/sysctl.d/local.conf 更新成功 " } || echo "/etc/sysctl.d/local.conf 更新失败"
 }
 
 update_limits_config()
 {
     rm -rf ./limits.conf ; rm -rf /etc/security/limits.conf
     wget --no-check-certificate ${GITURL}/etc/security/limits.conf &&
-       { mv -vf ./limits.conf /etc/security/limits.conf && ulimit -n 51200 && echo "/etc/security/limits.conf 更新成功" } ||
-        echo "/etc/security/limits.conf 更新失败"
+       { mv -vf ./limits.conf /etc/security/limits.conf && ulimit -n 51200 && echo "/etc/security/limits.conf 更新成功" } || echo "/etc/security/limits.conf 更新失败"
 }
-
-
 
 update_serverspeeder_config()
 {
@@ -53,14 +48,12 @@ chkinstall_shadowsocks-libev()
         update_ss_config;
         update_local_config;
         update_limits_config;
-#restart shadowsocks-libev
-        /etc/init.d/shadowsocks restart
+        /etc/init.d/shadowsocks restart;
     else
-#Download shadowsocks-libev.sh
-        rm -rf ./shadowsocks-libev.sh
+        rm -rf ./shadowsocks-libev.sh ;
         wget --no-check-certificate ${GITURL}/install/shadowsocks-libev.sh &&
           { chmod +x shadowsocks-libev.sh && echo "Shadowsocks-libev 安装引导文件已下载完成" } ||
-          echo "Shadowsocks-libev 安装引导文件下载出错" ;
+          echo "Shadowsocks-libev 安装引导文件下载出错"
     fi
 }
 
@@ -70,14 +63,12 @@ chkinstall_serverSpeeder()
     if [ -f /serverspeeder/bin/serveSppeeder.sh ] ; then
         echo "serverSpeeder 已安装" ;
         update_serverspeeder_config;
-#restart serverspeeder
-       /serverspeeder/bin/serverSpeeder.sh restart
+        /serverspeeder/bin/serverSpeeder.sh restart;
     else
-#Download serverspeeder.sh
-        rm -rf ./serverspeeder.sh
+        rm -rf ./serverspeeder.sh ;
         wget --no-check-certificate ${GITURL}/install/serverspeeder.sh &&
           { chmod +x serverspeeder.sh && echo "serverSpeeder 安装引导文件已下载完成" } ||
-          echo "serverSpeeder 安装引导文件下载出错" ;
+          echo "serverSpeeder 安装引导文件下载出错" 
     fi
 }
 
