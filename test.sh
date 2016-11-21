@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-chkinstall_ss()
+chkinstall_shadowsocks-libev()
 {
     if [ -f /usr/local/bin/ss-server ] ; then
         echo "Shadowsocks-libev 已安装"    
@@ -14,4 +14,19 @@ chkinstall_ss()
     fi
 }
 
-chkinstall_ss
+
+chkinstall_serverSpeeder()
+{
+    if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
+        echo "serverSpeeder 已安装"    
+    else
+        wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/install/serverspeeder.sh &&
+          chmod +x serverspeeder.sh;
+          echo "serverSpeeder 安装引导文件已下载完成" || 
+          echo "serverSpeeder 安装引导文件下载出错"
+    fi
+}
+
+
+chkinstall_shadowsocks-libev
+chkinstall_serverspeeder
