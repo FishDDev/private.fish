@@ -60,7 +60,7 @@ chkinstall_shadowsocks-libev()
         rm -rf ./shadowsocks-libev.sh
         wget --no-check-certificate ${GITURL}/install/shadowsocks-libev.sh &&
           { chmod +x shadowsocks-libev.sh && echo "Shadowsocks-libev 安装引导文件已下载完成" } ||
-          echo "Shadowsocks-libev 安装引导文件下载出错"
+          echo "Shadowsocks-libev 安装引导文件下载出错" ;
     fi
 }
 
@@ -72,12 +72,12 @@ chkinstall_serverSpeeder()
         update_serverspeeder_config;
 #restart serverspeeder
        /serverspeeder/bin/serverSpeeder.sh restart
-else
+    else
 #Download serverspeeder.sh
         rm -rf ./serverspeeder.sh
         wget --no-check-certificate ${GITURL}/install/serverspeeder.sh &&
           { chmod +x serverspeeder.sh && echo "serverSpeeder 安装引导文件已下载完成" } ||
-          echo "serverSpeeder 安装引导文件下载出错"
+          echo "serverSpeeder 安装引导文件下载出错" ;
     fi
 }
 
