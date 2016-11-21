@@ -32,7 +32,7 @@ update_limits_conf()
 
 update_config_json()
 {
-        rm -rf ./config.json /etc/shadowsocks-libev/config.json
+        rm -rf ./config.json /etc/shadowsocks-libev/config.json ;
         wget --no-check-certificate ${GITURL}/etc/shadowsocks-libev/config.json >>$RELOADLOG 2>&1 &&
         ( mv -f ./config.json /etc/shadowsocks-libev/config.json &&
         echo "/etc/shadowsocks-libev/config.json 更新成功 " ) ||
