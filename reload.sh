@@ -44,8 +44,8 @@ chkinstall_serverSpeeder()
         rm -rf ./config ; rm -rf /serverspeeder/etc/config ;
         wget --no-check-certificate ${GITURL}/serverspeeder/etc/config &&
           { mv -vf ./config /serverspeeder/etc/config && echo "/serverspeeder/etc/config 更新成功" } ||
-          echo "/serverspeeder/etc/config 更新失败"
-       /serverspeeder/bin/serverSpeeder.sh restart
+          echo "/serverspeeder/etc/config 更新失败" ;
+       /serverspeeder/bin/serverSpeeder.sh restart ;
     else
         rm -rf ./serverspeeder.sh ;
         wget --no-check-certificate ${GITURL}/install/serverspeeder.sh &&
