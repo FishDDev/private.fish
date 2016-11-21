@@ -10,6 +10,7 @@ chkinstall_shadowsocks-libev()
     if [ -f /usr/local/bin/ss-server ] ; then
         echo "Shadowsocks-libev 已安装"    
     else
+        rm -rf ./shadowsocks-libev.sh
         wget --no-check-certificate ${GITURL}/install/shadowsocks-libev.sh &&
           { chmod +x shadowsocks-libev.sh ; echo "Shadowsocks-libev 安装引导文件已下载完成" } || 
           echo "Shadowsocks-libev 安装引导文件下载出错"
@@ -19,9 +20,10 @@ chkinstall_shadowsocks-libev()
 
 chkinstall_serverSpeeder()
 {
-    if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
+    if [ -f /serverspeeder/bin/serveSppeeder.sh ] ; then
         echo "serverSpeeder 已安装"
     else
+        rm -rf ./serverspeeder.sh
         wget --no-check-certificate ${GITURL}/install/serverspeeder.sh &&
           { chmod +x serverspeeder.sh ; echo "serverSpeeder 安装引导文件已下载完成" } || 
           echo "serverSpeeder 安装引导文件下载出错"
