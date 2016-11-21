@@ -24,7 +24,7 @@ update_limits_conf()
 {
         rm -rf ./limits.conf /etc/security/limits.conf ;
         wget --no-check-certificate ${GITURL}/etc/security/limits.conf >>$RELOADLOG 2>&1 &&
-       ( mv -f ./limits.conf /etc/security/limits.conf && ulimit -n 51200 ;
+        ( mv -f ./limits.conf /etc/security/limits.conf && ulimit -n 51200 ;
         echo "/etc/security/limits.conf 更新成功" ) ||
         echo "/etc/security/limits.conf 更新失败" ;
 }
