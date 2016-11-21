@@ -1,1 +1,1 @@
-# private.fish
+# private
