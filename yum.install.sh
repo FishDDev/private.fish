@@ -2,7 +2,9 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-#by: Fish
+#By:      Fish
+#mailto:  fishdev@qq.com
+
 
 #update reload script
 rm -rf ./reload.sh
