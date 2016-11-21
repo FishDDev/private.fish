@@ -42,7 +42,6 @@ chkinstall_shadowsocks-libev()
 
 #restart shadowsocks-libev
         /etc/init.d/shadowsocks restart
-
     else
 
 #Download shadowsocks-libev.sh
@@ -70,7 +69,6 @@ chkinstall_serverSpeeder()
 
 #restart serverspeeder
        /serverspeeder/bin/serverSpeeder.sh restart
-
     else
 
 #Download serverspeeder.sh
