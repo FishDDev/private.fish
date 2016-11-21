@@ -82,4 +82,3 @@ set_timezone
 clean_file
 chkinstall_shadowsocks_libev
 chkinstall_serverspeeder
-clean_file
