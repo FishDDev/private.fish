@@ -42,7 +42,7 @@ update_local_config()
         rm -rf /etc/sysctl.d/local.conf
 # download /etc/sysctl.d/local.conf
         wget --no-check-certificate ${GITURL}/etc/sysctl.d/local.conf >>$RELOADLOG 2>&1 &&
-# update /etc/sysctl.d/local.conf & Refresh sysctl
+# update /etc/sysctl.d/local.conf & refresh sysctl
         ( mv -f ./local.conf /etc/sysctl.d/local.conf && sysctl -p /etc/sysctl.d/local.conf >>$RELOADLOG 2>&1 ; 
         echo "/etc/sysctl.d/local.conf 更新成功 " ) ||
         echo "/etc/sysctl.d/local.conf 更新失败" 
@@ -58,7 +58,7 @@ update_limits_conf()
         rm -rf /etc/security/limits.conf
 # download /etc/security/limits.conf
         wget --no-check-certificate ${GITURL}/etc/security/limits.conf >>$RELOADLOG 2>&1 &&
-# update /etc/security/limits.conf & Set ulimit
+# update /etc/security/limits.conf & set ulimit
         ( mv -f ./limits.conf /etc/security/limits.conf && ulimit -n 51200 ;
         echo "/etc/security/limits.conf 更新成功" ) ||
         echo "/etc/security/limits.conf 更新失败" ;
