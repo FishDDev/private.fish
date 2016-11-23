@@ -130,7 +130,6 @@ chkinstall_serverspeeder()
 
 # Remove old /var/log/reload.log
 rm -rf $RELOADLOG
-
 # Run shell
 rootness
 disable_selinux
