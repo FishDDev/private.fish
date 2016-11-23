@@ -2,11 +2,11 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-#By:      Fish
-#mailto:  fishdev@qq.com
+##by:      Fish
+##mailto:  fishdev@qq.com
 
 
-#Set Github download url
+# Set Github download url
 GITURL=https://raw.githubusercontent.com/FishDDev/tools/Privated
 RELOADLOG=/var/log/reload.log
 
