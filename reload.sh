@@ -128,7 +128,10 @@ chkinstall_serverspeeder()
     fi
 }
 
+# Remove old /var/log/reload.log
 rm -rf $RELOADLOG
+
+# Run shell
 rootness
 disable_selinux
 set_timezone
