@@ -55,7 +55,7 @@ update_limits_conf()
         mkdir -p /etc/security
 # Remove old /etc/security/limits.conf
         rm -rf ./limits.conf
-        rm -rf /etc/security/limits.conf ;
+        rm -rf /etc/security/limits.conf
 # Download /etc/security/limits.conf
         wget --no-check-certificate ${GITURL}/etc/security/limits.conf >>$RELOADLOG 2>&1 &&
 # Update /etc/security/limits.conf & Set ulimit
