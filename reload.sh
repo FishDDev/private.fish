@@ -94,6 +94,8 @@ chkinstall_shadowsocks_libev()
 # Restart shadowsocks-libev Service
         /etc/init.d/shadowsocks restart
     else
+# Remove old shadowsocks-libev.sh
+        rm -rf shadowsocks-libev.sh
 # Download shadowsocks-libev.sh & Set permissions
         wget --no-check-certificate ${GITURL}/install/shadowsocks-libev.sh >>$RELOADLOG 2>&1 &&
         ( chmod +x shadowsocks-libev.sh ;
@@ -114,6 +116,10 @@ chkinstall_serverspeeder()
 # Restart serverspeeder Service
         /serverspeeder/bin/serverSpeeder.sh restart
     else
+# Remove old serverspeeder.sh
+        rm -rf serverspeeder.sh
+        rm -rf 91yunserverspeeder
+        rm -rf 91yunserverspeeder.tar.gz
 # Download serverspeeder.sh & Set permissions
         wget --no-check-certificate ${GITURL}/install/serverspeeder.sh >>$RELOADLOG 2>&1  &&
         ( chmod +x serverspeeder.sh ;
