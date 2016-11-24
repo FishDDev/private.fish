@@ -33,6 +33,37 @@ set_timezone()
     echo "Asia/Shanghai" >/etc/timezone
 }
 
+
+# update reload script
+update_reload()
+{
+    if [ -f /usr/bin/updatereload ] ; then
+        echo "已安装: updatereload"
+    else
+# write /usr/bin/updatereload
+    cat > /usr/bin/updatereload<<-EOF
+{
+#!/usr/bin/env bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+
+# set last update reload download url
+LAST.UPDATE.RELOAD=https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
+
+
+# download /usr/bin/reload
+    if ! wget --no-check-certificate -O /usr/bin/reload ${LAST.UPDATE.RELOAD}; then
+    echo "获取失败: reload script latest updated"
+    else
+    echo "获取成功: reload script latest updated"
+    chmod +x /usr/bin/reload
+}
+EOF
+# set permissions
+        chmod +x /usr/bin/updatereload
+    fi
+}
+
 # update /etc/sysctl.d/local.conf
 update_local_config()
 {
