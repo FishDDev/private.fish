@@ -32,6 +32,20 @@ set_timezone()
     echo "Asia/Shanghai" >/etc/timezone
 }
 
+# update reload.sh
+update_reload()
+{
+# remove old reload.sh
+        rm -rf ./reload.sh
+        rm -rf /usr/bin/reload
+# update reload.sh
+        wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh >>$RELOADLOG 2>&1
+# copy reload.sh to /usr/bin/ & set permissions
+        mv -f ./reload.sh /usr/bin/reload >>$RELOADLOG 2>&1 && chmod +x /usr/bin/reload >>$RELOADLOG 2>&1 &&
+        echo "更新成功: reload" ) ||        
+        echo "更新失败: reload"
+}
+
 # update /etc/sysctl.d/local.conf
 update_local_config()
 {
@@ -44,8 +58,8 @@ update_local_config()
         wget --no-check-certificate ${GITURL}/etc/sysctl.d/local.conf >>$RELOADLOG 2>&1 &&
 # update /etc/sysctl.d/local.conf & refresh sysctl
         ( mv -f ./local.conf /etc/sysctl.d/local.conf && sysctl -p /etc/sysctl.d/local.conf >>$RELOADLOG 2>&1 ; 
-        echo "/etc/sysctl.d/local.conf 更新成功 " ) ||
-        echo "/etc/sysctl.d/local.conf 更新失败" 
+        echo "更新成功: /etc/sysctl.d/local.conf" ) ||
+        echo "更新失败: /etc/sysctl.d/local.conf" 
 }
 
 # update /etc/security/limits.conf
@@ -60,8 +74,8 @@ update_limits_conf()
         wget --no-check-certificate ${GITURL}/etc/security/limits.conf >>$RELOADLOG 2>&1 &&
 # update /etc/security/limits.conf & set ulimit
         ( mv -f ./limits.conf /etc/security/limits.conf && ulimit -n 51200 ;
-        echo "/etc/security/limits.conf 更新成功" ) ||
-        echo "/etc/security/limits.conf 更新失败" ;
+        echo "更新成功: /etc/security/limits.conf" ) ||
+        echo "更新失败: /etc/security/limits.conf" ;
 }
 
 # update /etc/shadowsocks-libev/config.json
@@ -76,15 +90,15 @@ update_config_json()
         wget --no-check-certificate ${GITURL}/etc/shadowsocks-libev/config.json >>$RELOADLOG 2>&1 &&
 # update /etc/shadowsocks-libev/config.json
         ( mv -f ./config.json /etc/shadowsocks-libev/config.json &&
-        echo "/etc/shadowsocks-libev/config.json 更新成功 " ) ||
-        echo "/etc/shadowsocks-libev/config.json 更新失败"
+        echo "更新成功: /etc/shadowsocks-libev/config.json" ) ||
+        echo "更新失败: /etc/shadowsocks-libev/config.json"
 }
 
 # check shadowsocks-libev installed
 chkinstall_shadowsocks_libev()
 {
     if [ -f /usr/local/bin/ss-server ] ; then
-        echo "Shadowsocks-libev 已安装"
+        echo "已安装: Shadowsocks-libev"
 # remove old shadowsocks-libev.sh
         rm -rf shadowsocks-libev.sh
 # update config
@@ -99,8 +113,8 @@ chkinstall_shadowsocks_libev()
 # download shadowsocks-libev.sh & set permissions
         wget --no-check-certificate ${GITURL}/install/shadowsocks-libev.sh >>$RELOADLOG 2>&1 &&
         ( chmod +x shadowsocks-libev.sh ;
-        echo "Shadowsocks-libev 安装引导文件已下载完成" ) ||
-        echo "Shadowsocks-libev 安装引导文件下载出错"
+        echo "获取成功: Shadowsocks-libev installation Script" ) ||
+        echo "获取失败: Shadowsocks-libev installation Script"
     fi
 }
 
@@ -108,7 +122,7 @@ chkinstall_shadowsocks_libev()
 chkinstall_serverspeeder()
 {
     if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
-        echo "serverSpeeder 已安装"
+        echo "已安装: serverSpeeder"
 # remove old serverspeeder.sh
         rm -rf serverspeeder.sh
         rm -rf 91yunserverspeeder
@@ -123,8 +137,8 @@ chkinstall_serverspeeder()
 # download serverspeeder.sh & set permissions
         wget --no-check-certificate ${GITURL}/install/serverspeeder.sh >>$RELOADLOG 2>&1  &&
         ( chmod +x serverspeeder.sh ;
-        echo "serverSpeeder 安装引导文件已下载完成" ) ||
-        echo "serverSpeeder 安装引导文件下载出错"
+        echo "获取成功: serverSpeeder installation Script" ) ||
+        echo "获取失败: serverSpeeder installation Script"
     fi
 }
 
@@ -136,3 +150,5 @@ disable_selinux
 set_timezone
 chkinstall_shadowsocks_libev
 chkinstall_serverspeeder
+# update reload
+update_reload
