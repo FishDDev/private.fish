@@ -28,5 +28,3 @@ pip install -I greenlet gevent
 rm -rf ./yum.install.sh
 rm -rf ./reload
 
-# run reload
-reload
