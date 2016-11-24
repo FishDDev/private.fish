@@ -33,23 +33,6 @@ set_timezone()
     echo "Asia/Shanghai" >/etc/timezone
 }
 
-# update reload.sh
-update_script()
-{
-cat > /usr/bin/upreload<<-EOF
-#!/usr/bin/env bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH
-
-cd /root
-wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/yum.install.sh
-chmod +x yum.install.sh
-sh ./yum.install.sh
-rm -rf ./yum.install.sh
-EOF
-chmod +x /usr/bin/upreload
-}
-
 # update /etc/sysctl.d/local.conf
 update_local_config()
 {
@@ -154,4 +137,3 @@ disable_selinux
 set_timezone
 chkinstall_shadowsocks_libev
 chkinstall_serverspeeder
-update_script
