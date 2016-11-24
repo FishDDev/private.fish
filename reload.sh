@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
@@ -36,12 +37,15 @@ set_timezone()
 update_script()
 {
 cat > /usr/bin/upreload<<-EOF
+#!/usr/bin/env bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+
 cd /root
 wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/yum.install.sh
 chmod +x yum.install.sh
 sh ./yum.install.sh
 rm -rf ./yum.install.sh
-}
 EOF
 chmod +x /usr/bin/upreload
 }
