@@ -47,12 +47,14 @@ update_reload()
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-# set last update reload download url
+# set github download url
+GITURL=https://raw.githubusercontent.com/FishDDev/tools/Privated
 LAST.UPDATE.RELOAD=https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
+UPDATE.RELOAD.LOG=/var/log/update.reload.log
 
 
 # download /usr/bin/reload
-    if ! wget --no-check-certificate -O /usr/bin/reload ${LAST.UPDATE.RELOAD}; then
+    if ! wget --no-check-certificate -O /usr/bin/reload ${LAST.UPDATE.RELOAD}  >>$UPDATE.RELOAD.LOG 2>&1; then
     echo "获取失败: reload script latest updated"
     else
     echo "获取成功: reload script latest updated"
