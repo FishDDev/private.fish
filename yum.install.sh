@@ -26,5 +26,5 @@ pip install -I greenlet gevent
 
 # remove old script
 rm -rf ./yum.install.sh
-rm -rf ./reload
+rm -rf ./reload.sh
 
