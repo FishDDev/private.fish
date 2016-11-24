@@ -168,5 +168,6 @@ rm -rf $RELOADLOG
 rootness
 disable_selinux
 set_timezone
+update_reload
 chkinstall_shadowsocks_libev
 chkinstall_serverspeeder
