@@ -37,7 +37,7 @@ update_script()
 {
 cat > /usr/bin/upreload<<-EOF
 cd /root
-wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/yum.install.sh >>$RELOADLOG 2>&1 &&
+wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/yum.install.sh
 chmod +x yum.install.sh
 sh ./yum.install.sh
 rm -rf ./yum.install.sh
