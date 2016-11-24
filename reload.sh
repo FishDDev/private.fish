@@ -33,17 +33,17 @@ set_timezone()
 }
 
 # update reload.sh
-update_reload()
+update_script()
 {
-# remove old reload.sh
-        rm -rf ./reload.sh
-        rm -rf /usr/bin/reload
-# update reload.sh
-        wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh >>$RELOADLOG 2>&1
-# copy reload.sh to /usr/bin/ & set permissions
-        mv -f ./reload.sh /usr/bin/reload >>$RELOADLOG 2>&1 && chmod +x /usr/bin/reload >>$RELOADLOG 2>&1 &&
-        echo "更新成功: reload" ) ||        
-        echo "更新失败: reload"
+cat > /usr/bin/upreload<<-EOF
+cd /root
+wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/yum.install.sh >>$RELOADLOG 2>&1 &&
+chmod +x yum.install.sh
+sh ./yum.install.sh
+rm -rf ./yum.install.sh
+}
+EOF
+chmod +x /usr/bin/upreload
 }
 
 # update /etc/sysctl.d/local.conf
@@ -150,5 +150,4 @@ disable_selinux
 set_timezone
 chkinstall_shadowsocks_libev
 chkinstall_serverspeeder
-# update reload
-update_reload
+update_script
