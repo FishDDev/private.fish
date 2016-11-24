@@ -270,7 +270,7 @@ config_shadowsocks(){
     "local_port":1080,
     "password":"${shadowsockspwd}",
     "timeout":30,
-    "method":"table"
+    "method":"rc4-md5"
 }
 EOF
 }
