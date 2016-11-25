@@ -38,7 +38,7 @@ update_reload()
 {
     if [ -f /usr/bin/updatereload ] ; then
         echo "已安装: updatereload"
-    fi
+    else
 # write /usr/bin/updatereload
     cat > /usr/bin/updatereload<<-EOF
 {
@@ -60,6 +60,7 @@ UPDATE.RELOAD.LOG=/var/log/update.reload.log
     chmod +x /usr/bin/reload
 }
 EOF
+    fi
 # set permissions
         chmod +x /usr/bin/updatereload
 }
