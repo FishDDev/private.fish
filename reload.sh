@@ -39,7 +39,7 @@ update_reload()
 {
     if [ -f /usr/bin/updatereload ] ; then
         echo "已安装: updatereload"
-    else
+    fi
 # write /usr/bin/updatereload
     cat > /usr/bin/updatereload<<-EOF
 {
@@ -63,7 +63,6 @@ UPDATE.RELOAD.LOG=/var/log/update.reload.log
 EOF
 # set permissions
         chmod +x /usr/bin/updatereload
-    fi
 }
 
 # update /etc/sysctl.d/local.conf
