@@ -32,37 +32,34 @@ set_timezone()
     echo "Asia/Shanghai" >/etc/timezone
 }
 
-
 # update reload script
 update_reload()
 {
     if [ -f /usr/bin/updatereload ] ; then
         echo "已安装: updatereload"
+        return 0
     else
 # write /usr/bin/updatereload
     cat > /usr/bin/updatereload<<-EOF
-{
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-# set github download url
-GITURL=https://raw.githubusercontent.com/FishDDev/tools/Privated
-LAST.UPDATE.RELOAD=https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
-UPDATE.RELOAD.LOG=/var/log/update.reload.log
-
-
 # download /usr/bin/reload
-    if ! wget --no-check-certificate -O /usr/bin/reload ${LAST.UPDATE.RELOAD}  >>$UPDATE.RELOAD.LOG 2>&1; then
-    echo "获取失败: reload script latest updated"
+    if ! wget --no-check-certificate -O /usr/bin/reload https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
+ > /var/log/update.reload.log 2>&1; then
+         echo "获取成功: reload script latest updated"
+         chmod +x /usr/bin/reload
     else
-    echo "获取成功: reload script latest updated"
-    chmod +x /usr/bin/reload
-}
-EOF
+         echo "获取失败: reload script latest updated"
     fi
+EOF
 # set permissions
         chmod +x /usr/bin/updatereload
+    fi
+    if [ $? -eq 1 ] ; then
+        echo "写入更新脚本失败"
+    fi
 }
 
 # update /etc/sysctl.d/local.conf
