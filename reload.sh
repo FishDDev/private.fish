@@ -5,7 +5,6 @@ export PATH
 ##by:      Fish
 ##mailto:  fishdev@qq.com
 
-
 # set github download url
 GITURL=https://raw.githubusercontent.com/FishDDev/tools/Privated
 RELOADLOG=/var/log/reload.log
@@ -41,7 +40,7 @@ update_reload()
     else
 # write /usr/bin/updatereload
         echo "写入更新脚本成功"
-    cat > /usr/bin/updatereload<<-EOF
+cat > /usr/bin/updatereload<<-EOF
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
