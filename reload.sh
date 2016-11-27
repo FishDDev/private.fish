@@ -40,6 +40,7 @@ update_reload()
         return 0
     else
 # write /usr/bin/updatereload
+        echo "写入更新脚本成功"
     cat > /usr/bin/updatereload<<-EOF
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
