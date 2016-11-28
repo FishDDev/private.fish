@@ -116,12 +116,6 @@ chkinstall_shadowsocks_libev()
         echo "已安装: Shadowsocks-libev"
 # remove old shadowsocks-libev.sh
         rm -rf shadowsocks-libev.sh
-# update config
-        update_local_config
-        update_limits_conf
-        update_config_json
-# restart shadowsocks-libev service
-        /etc/init.d/shadowsocks restart
     else
 # remove old shadowsocks-libev.sh
         rm -rf shadowsocks-libev.sh
@@ -142,8 +136,6 @@ chkinstall_serverspeeder()
         rm -rf serverspeeder.sh
         rm -rf 91yunserverspeeder
         rm -rf 91yunserverspeeder.tar.gz
-# restart serverspeeder service
-        /serverspeeder/bin/serverSpeeder.sh restart
     else
 # remove old serverspeeder.sh
         rm -rf serverspeeder.sh
@@ -157,6 +149,27 @@ chkinstall_serverspeeder()
     fi
 }
 
+# restart service
+restart_service()
+{
+# check shadowsocks-libev installed
+    if [ -f /usr/local/bin/ss-server ] ; then
+# update config
+        update_local_config
+        update_limits_conf
+        update_config_json
+# restart shadowsocks-libev service
+        echo "Restart Service: Shadowsocks-libev"
+        /etc/init.d/shadowsocks restart
+    fi
+# check serverspeeder installed
+    if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
+# restart serverspeeder service
+        echo "Restart Service: serverSpeeder"
+        /serverspeeder/bin/serverSpeeder.sh restart
+    fi
+}
+
 # remove old /var/log/reload.log
 rm -rf $RELOADLOG
 # run shell
@@ -166,3 +179,4 @@ set_timezone
 update_reload
 chkinstall_shadowsocks_libev
 chkinstall_serverspeeder
+restart_service
