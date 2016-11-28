@@ -40,7 +40,7 @@ update_reload()
     else
 # write /usr/bin/updatereload
         echo "写入更新脚本成功"
-cat > /usr/bin/updatereload<<-EOF
+sudo cat > /usr/bin/updatereload<<-EOF
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
@@ -51,6 +51,7 @@ export PATH
          chmod +x /usr/bin/reload
     else
          echo "获取失败: reload script latest updated"
+         chmod +x /usr/bin/reload
     fi
 EOF
 # set permissions
