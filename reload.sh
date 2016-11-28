@@ -40,26 +40,26 @@ update_reload()
     else
 # write /usr/bin/updatereload
         echo "写入更新脚本成功"
-sudo cat > /usr/bin/updatereload<<-EOF
+cat > /usr/bin/updatereload<<-EOF
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 # download /usr/bin/reload
     if ! wget --no-check-certificate -O /usr/bin/reload https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh >>/var/log/update.reload.log 2>&1 ; then
-         echo "获取成功: reload script latest updated"
-         chmod +x /usr/bin/reload
-    else
          echo "获取失败: reload script latest updated"
-         chmod +x /usr/bin/reload
+    else
+         echo "获取成功: reload script latest updated"
     fi
-EOF
 # set permissions
-        chmod +x /usr/bin/updatereload
+    chmod +x /usr/bin/reload
+EOF
     fi
     if [ $? -eq 1 ] ; then
         echo "写入更新脚本失败"
     fi
+# set permissions
+    chmod +x /usr/bin/updatereload
 }
 
 # update /etc/sysctl.d/local.conf
