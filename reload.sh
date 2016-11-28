@@ -56,6 +56,8 @@ EOF
     fi
     if [ $? -eq 1 ] ; then
         echo "写入更新脚本失败"
+    else
+        echo "写入更新脚本成功"
     fi
 # set permissions
     chmod +x /usr/bin/updatereload
