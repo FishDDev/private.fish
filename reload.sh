@@ -46,8 +46,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 # download /usr/bin/reload
-    if ! wget --no-check-certificate -O /usr/bin/reload https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
- > /var/log/update.reload.log 2>&1; then
+    if ! wget --no-check-certificate -O /usr/bin/reload https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh >>/var/log/update.reload.log 2>&1 ; then
          echo "获取成功: reload script latest updated"
          chmod +x /usr/bin/reload
     else
