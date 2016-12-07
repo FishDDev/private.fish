@@ -349,7 +349,7 @@ install_shadowsocks(){
     echo -e "Your Password: \033[41;37m ${shadowsockspwd} \033[0m"
     echo -e "Your Local IP: \033[41;37m 127.0.0.1 \033[0m"
     echo -e "Your Local Port: \033[41;37m 1080 \033[0m"
-    echo -e "Your Encryption Method: \033[41;37m table \033[0m"
+    echo -e "Your Encryption Method: \033[41;37m rc4-md5 \033[0m"
     echo
     echo "Enjoy it!"
     echo
