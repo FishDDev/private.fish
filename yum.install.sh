@@ -16,6 +16,7 @@ chmod +x /usr/bin/reload
 
 # yum clean & update & upgrade
 yum clean all
+yum makecache fast
 yum update 
 yum upgrade
 
