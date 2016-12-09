@@ -276,7 +276,7 @@ if   [ "${selected}" == "1" ]; then
     "local_port":1080,
     "password":"${shadowsockspwd}",
     "timeout:"10,
-    "method":"rc4",
+    "method":"rc4-md5",
     "fast_open":false
 }
 EOF
@@ -293,7 +293,7 @@ elif [ "${selected}" == "2" ]; then
     "local_port":1080,
     "password":"${shadowsockspwd}",
     "timeout":10,
-    "method":"rc4",
+    "method":"rc4-md5",
     "protocol":"origin",
     "protocol_param":"",
     "obfs":"plain",
@@ -314,7 +314,7 @@ elif [ "${selected}" == "3" ]; then
     "server_port":${shadowsocksport},
     "local_port":1080,
     "password":"${shadowsockspwd}",
-    "method":"rc4",
+    "method":"rc4-md5",
     "timeout":10
 }
 EOF
@@ -335,7 +335,7 @@ elif [ "${selected}" == "4" ]; then
     "local_port":1080,
     "password":"${shadowsockspwd}",
     "timeout":10,
-    "method":"rc4"
+    "method":"rc4-md5"
 }
 EOF
 fi
@@ -587,7 +587,7 @@ install_completed_python() {
     echo -e "Your Server IP        : ${red} $(get_ip) ${plain}"
     echo -e "Your Server Port      : ${red} ${shadowsocksport} ${plain}"
     echo -e "Your Password         : ${red} ${shadowsockspwd} ${plain}"
-    echo -e "Your Encryption Method: ${red} aes-256-cfb ${plain}"
+    echo -e "Your Encryption Method: ${red} rc4-md5 ${plain}"
 }
 
 install_completed_r() {
@@ -597,7 +597,7 @@ install_completed_r() {
     echo -e "Your Server IP        : ${red} $(get_ip) ${plain}"
     echo -e "Your Server Port      : ${red} ${shadowsocksport} ${plain}"
     echo -e "Your Password         : ${red} ${shadowsockspwd} ${plain}"
-    echo -e "Your Encryption Method: ${red} aes-256-cfb ${plain}"
+    echo -e "Your Encryption Method: ${red} rc4-md5 ${plain}"
     echo -e "Protocol              : ${red} origin ${plain}"
     echo -e "obfs                  : ${red} plain ${plain}"
     echo
@@ -612,7 +612,7 @@ install_completed_go() {
     echo -e "Your Server IP        : ${red} $(get_ip) ${plain}"
     echo -e "Your Server Port      : ${red} ${shadowsocksport} ${plain}"
     echo -e "Your Password         : ${red} ${shadowsockspwd} ${plain}"
-    echo -e "Your Encryption Method: ${red} aes-256-cfb ${plain}"
+    echo -e "Your Encryption Method: ${red} rc4-md5 ${plain}"
 }
 
 install_completed_libev() {
@@ -622,7 +622,7 @@ install_completed_libev() {
     echo -e "Your Server IP        : ${red} $(get_ip) ${plain}"
     echo -e "Your Server Port      : ${red} ${shadowsocksport} ${plain}"
     echo -e "Your Password         : ${red} ${shadowsockspwd} ${plain}"
-    echo -e "Your Encryption Method: ${red} aes-256-cfb ${plain}"
+    echo -e "Your Encryption Method: ${red} rc4-md5 ${plain}"
 }
 
 install_main(){
