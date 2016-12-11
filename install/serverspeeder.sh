@@ -249,7 +249,13 @@ echo "序列号：$SNO"
 sed -i "s/serial=\"sno\"/serial=\"$SNO\"/g" 91yunserverspeeder/apxfiles/etc/config
 rv=$release"_"$ver1"_"$ver2
 sed -i "s/Debian_7_3.2.0-4-amd64/$rv/g" 91yunserverspeeder/apxfiles/etc/config
-# sed -i "s/accppp=\"1\"/accppp=\"0\"/g" 91yunserverspeeder/apxfiles/etc/config
+sed -i "s/accppp=\"1\"/accppp=\"0\"/g" 91yunserverspeeder/apxfiles/etc/config
+#enable udp
+sed -i "s/tcpOnly=\"1\"/tcpOnly=\"0\"/g" 91yunserverspeeder/apxfiles/etc/config
+#l2wq w2ql Limit
+sed -i "s/l2wQLimit=\"256 2048\"/l2wQLimit=\"512 4096\"/g" 91yunserverspeeder/apxfiles/etc/config
+sed -i "s/w2lQLimit=\"256 2048\"/l2wQLimit=\"512 4096\"/g" 91yunserverspeeder/apxfiles/etc/config
+
 
 #下载bin文件
 echo "======================================"
