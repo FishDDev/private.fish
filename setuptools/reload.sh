@@ -117,13 +117,13 @@ chkinstall_shadowsocks()
     if [ -f /usr/local/bin/ss-server ] ; then
         echo "已安装: Shadowsocks"
 # remove old shadowsocks installation Script
-        rm -rf setuptools.sh
+        rm -rf shadowsocks-install.sh
     else
 # remove old shadowsocks installation Script
-        rm -rf setuptools.sh
+        rm -rf shadowsocks-install.sh
 # download setuptools.sh & set permissions
-        wget --no-check-certificate ${GITURL}/setuptools/setuptools.sh >>$RELOADLOG 2>&1 &&
-        ( chmod +x setuptools.sh ;
+        wget --no-check-certificate ${GITURL}/setuptools/shadowsocks-install.sh >>$RELOADLOG 2>&1 &&
+        ( chmod +x shadowsocks-install.sh ;
         echo "获取成功: Shadowsocks installation Script" ) ||
         echo "获取失败: Shadowsocks installation Script"
     fi
