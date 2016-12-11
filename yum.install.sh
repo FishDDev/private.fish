@@ -5,7 +5,6 @@ export PATH
 ##by:      Fish
 ##mailto:  fishdev@qq.com
 
-
 # update reload script
 rm -rf ./reload.sh
 rm -rf /usr/bin/reload
