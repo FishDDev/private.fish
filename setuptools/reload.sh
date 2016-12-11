@@ -45,7 +45,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 # download /usr/bin/reload
-    if ! wget --no-check-certificate -O /usr/bin/reload https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh >>/var/log/update.reload.log 2>&1 ; then
+    if ! wget --no-check-certificate -O /usr/bin/reload https://raw.githubusercontent.com/FishDDev/tools/Privated/setuptools/reload.sh >>/var/log/update.reload.log 2>&1 ; then
          echo "获取失败: reload script latest updated"
     else
          echo "获取成功: reload script latest updated"
@@ -95,7 +95,7 @@ update_limits_conf()
         echo "更新失败: /etc/security/limits.conf" ;
 }
 
-# update /etc/shadowsocks-libev/config.json
+# update shadowsocks config.json
 update_config_json()
 {
 # create directory /etc/shadowsocks-libev
@@ -111,21 +111,21 @@ update_config_json()
         echo "更新失败: /etc/shadowsocks-libev/config.json"
 }
 
-# check shadowsocks-libev installed
-chkinstall_shadowsocks_libev()
+# check shadowsocks
+chkinstall_shadowsocks()
 {
     if [ -f /usr/local/bin/ss-server ] ; then
-        echo "已安装: Shadowsocks-libev"
-# remove old shadowsocks-libev.sh
-        rm -rf shadowsocks-libev.sh
+        echo "已安装: Shadowsocks"
+# remove old shadowsocks installation Script
+        rm -rf setuptools.sh
     else
-# remove old shadowsocks-libev.sh
-        rm -rf shadowsocks-libev.sh
-# download shadowsocks-libev.sh & set permissions
-        wget --no-check-certificate ${GITURL}/install/shadowsocks-libev.sh >>$RELOADLOG 2>&1 &&
-        ( chmod +x shadowsocks-libev.sh ;
-        echo "获取成功: Shadowsocks-libev installation Script" ) ||
-        echo "获取失败: Shadowsocks-libev installation Script"
+# remove old shadowsocks installation Script
+        rm -rf setuptools.sh
+# download setuptools.sh & set permissions
+        wget --no-check-certificate ${GITURL}/setuptools/setuptools.sh >>$RELOADLOG 2>&1 &&
+        ( chmod +x setuptools.sh ;
+        echo "获取成功: Shadowsocks installation Script" ) ||
+        echo "获取失败: Shadowsocks installation Script"
     fi
 }
 
@@ -144,7 +144,7 @@ chkinstall_serverspeeder()
         rm -rf 91yunserverspeeder
         rm -rf 91yunserverspeeder.tar.gz
 # download serverspeeder.sh & set permissions
-        wget --no-check-certificate ${GITURL}/install/serverspeeder.sh >>$RELOADLOG 2>&1  &&
+        wget --no-check-certificate ${GITURL}/setuptools/serverspeeder.sh >>$RELOADLOG 2>&1  &&
         ( chmod +x serverspeeder.sh ;
         echo "获取成功: serverSpeeder installation Script" ) ||
         echo "获取失败: serverSpeeder installation Script"
@@ -154,14 +154,14 @@ chkinstall_serverspeeder()
 # restart service
 restart_service()
 {
-# check shadowsocks-libev installed
+# check shadowsocks installed
     if [ -f /usr/local/bin/ss-server ] ; then
 # update config
         update_local_config
         update_limits_conf
-        update_config_json
-# restart shadowsocks-libev service
-        echo "Restart Service: Shadowsocks-libev"
+        #update_config_json
+# restart shadowsocks service
+        echo "Restart Service: Shadowsocks"
         /etc/init.d/shadowsocks restart
     fi
 # check serverspeeder installed
@@ -179,6 +179,6 @@ rootness
 disable_selinux
 set_timezone
 update_reload
-chkinstall_shadowsocks_libev
+chkinstall_shadowsocks
 chkinstall_serverspeeder
 restart_service

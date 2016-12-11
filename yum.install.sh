@@ -9,7 +9,7 @@ export PATH
 # update reload script
 rm -rf ./reload.sh
 rm -rf /usr/bin/reload
-wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/reload.sh
+wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/setuptools/reload.sh
 cp -f ./reload.sh /usr/bin/reload
 chmod +x ./reload.sh
 chmod +x /usr/bin/reload
