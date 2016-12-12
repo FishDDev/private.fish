@@ -50,14 +50,6 @@ chkinstall_serverspeeder()
     fi
 }
 
-tools_shadowsocks()
-{
-    if [ -f /etc/init.d/shadowsocks ] ; then
-        ln -s /etc/init.d/shadowsocks-* /etc/init.d/shadowsocks
-    fi
-}
-
-
 optimized_shadowsocks()
 {
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
@@ -72,7 +64,7 @@ restart_service()
     if [ -f /usr/local/bin/ss-server ] ; then
         tools_shadowsocks
         echo "Restart Service: Shadowsocks"
-        /etc/init.d/shadowsocks restart
+        /etc/init.d/shadowsocks-libev restart
     fi
     
     if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
