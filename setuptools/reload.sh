@@ -45,12 +45,18 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 # download /usr/bin/reload
-    if ! wget --no-check-certificate -O /usr/bin/reload https://raw.githubusercontent.com/FishDDev/tools/Privated/setuptools/reload.sh >>/var/log/update.reload.log 2>&1 ; then
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/FishDDev/tools/Privated/setuptools/reload.sh >>/var/log/update.reload.log 2>&1 ; then
          echo "获取失败: reload script latest updated"
     else
          echo "获取成功: reload script latest updated"
     fi
 # set permissions
+    chmod +x /usr/bin/reload
+# set permissions
+    chmod +x /usr/bin/updatereload
+# remove old reload
+    rm -rf /usr/bin/reload
+    cp -f ./reload.sh /usr/bin/reload
     chmod +x /usr/bin/reload
 EOF
     fi
@@ -61,6 +67,10 @@ EOF
     fi
 # set permissions
     chmod +x /usr/bin/updatereload
+# remove old reload
+    rm -rf /usr/bin/reload
+    cp -f ./reload.sh /usr/bin/reload
+    chmod +x /usr/bin/reload
 }
 
 # update /etc/sysctl.d/local.conf
