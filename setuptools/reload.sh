@@ -52,7 +52,7 @@ chkinstall_serverspeeder()
 
 tools_shadowsocks()
 {
-    if ! [ -f /etc/init.d/shadowsocks ] ; then
+    if [ -f /etc/init.d/shadowsocks ] ; then
         ln -s /etc/init.d/shadowsocks-* /etc/init.d/shadowsocks
     fi
 }
@@ -73,6 +73,7 @@ optimized_shadowsocks()
 restart_service()
 {
     if [ -f /usr/local/bin/ss-server ] ; then
+        tools_shadowsocks
         echo "Restart Service: Shadowsocks"
         /etc/init.d/shadowsocks restart
     fi
@@ -89,6 +90,5 @@ rootness
 disable_selinux
 chkinstall_shadowsocks
 chkinstall_serverspeeder
-tools_shadowsocks
 optimized_shadowsocks
 restart_service
