@@ -55,7 +55,6 @@ export PATH
 # set permissions
     chmod +x /usr/bin/updatereload
 # remove old reload
-    rm -rf /usr/bin/reload
     cp -f ./reload.sh /usr/bin/reload
     chmod +x /usr/bin/reload
 EOF
@@ -68,7 +67,6 @@ EOF
 # set permissions
     chmod +x /usr/bin/updatereload
 # remove old reload
-    rm -rf /usr/bin/reload
     cp -f ./reload.sh /usr/bin/reload
     chmod +x /usr/bin/reload
 }
