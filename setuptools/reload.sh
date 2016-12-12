@@ -162,7 +162,7 @@ restart_service()
         #update_config_json
 # restart shadowsocks service
         echo "Restart Service: Shadowsocks"
-        /etc/init.d/shadowsocks restart
+        /etc/init.d/shadowsocks* restart
     fi
 # check serverspeeder installed
     if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
