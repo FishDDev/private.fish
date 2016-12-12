@@ -62,9 +62,6 @@ optimized_shadowsocks()
 {
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
         echo -e "* soft nofile 51200\n* hard nofile 51200"
-        /sbin/modprobe tcp_hybla
-        sysctl --system 2&>1 /dev/null
-        sysctl -p /etc/sysctl.d/local.conf 2&>1 /dev/null
         ulimit -n 51200
     fi
 }
