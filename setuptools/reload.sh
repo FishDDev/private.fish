@@ -62,13 +62,10 @@ optimized_shadowsocks()
 {
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
         echo -e "* soft nofile 51200\n* hard nofile 51200"
-        /etc/init.d/shadowsocks stop
         /sbin/modprobe tcp_hybla
         sysctl --system 2&>1 /dev/null
         sysctl -p /etc/sysctl.d/local.conf 2&>1 /dev/null
-        echo 3 > /proc/sys/net/ipv4/tcp_fastopen
         ulimit -n 51200
-        /etc/init.d/shadowsocks start
     fi
 }
 
