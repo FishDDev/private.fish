@@ -10,7 +10,7 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 relog=/var/log/relog.log
-giturl=https://raw.githubusercontent.com/FishDDev/tools/Privated
+giturl=https://raw.githubusercontent.com/FishDDev/tools/Privated/setuptools
 
 ss_init[0]=/etc/init.d/shadowsocks
 ss_init[1]=/etc/init.d/shadowsocks-python
@@ -56,8 +56,8 @@ chkinstall_shadowsocks()
         rm -rf ./shadowsocks-install.*
         wget --no-check-certificate ${giturl}/shadowsocks-install.sh >>$relog 2>&1 &&
         ( chmod +x shadowsocks-install.sh ;
-        echo -e "${green}done: Shadowsocks installationscripts${plain}" ) ||
-        echo -e "${red}failed: Shadowsocks installationscripts${plain}"
+        echo -e "${green}done: Shadowsocks installation scripts${plain}" ) ||
+        echo -e "${red}failed: Shadowsocks installation scripts${plain}"
     fi
 }
 
@@ -69,8 +69,8 @@ chkinstall_serverspeeder()
         rm -rf ./serverspeeder.*
         wget --no-check-certificate ${giturl}/serverspeeder.sh >>$relog 2>&1  &&
         ( chmod +x serverspeeder.sh ;
-        echo -e "${green}done: serverSpeeder installationscripts${plain}" ) ||
-        echo -e "${red}failed: serverSpeeder installationscripts${plain}"
+        echo -e "${green}done: serverSpeeder installation scripts${plain}" ) ||
+        echo -e "${red}failed: serverSpeeder installation scripts${plain}"
     fi
 }
 
