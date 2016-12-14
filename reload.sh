@@ -91,3 +91,16 @@ chkinstall_shadowsocks
 chkinstall_serverspeeder
 optimized_shadowsocks
 restart_service
+
+# Initialization step
+action=$1
+[ -z $1 ] && action=install
+case "$action" in
+    install|uninstall)
+    ${action}_shadowsocks
+    ;;
+    *)
+    echo "Arguments error! [${action}]"
+    echo "Usage: `basename $0` [install|uninstall]"
+    ;;
+esac
