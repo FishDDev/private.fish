@@ -30,7 +30,7 @@ disable_selinux(){
 
 chkinstall_shadowsocks()
 {
-    if [ -f /usr/local/bin/ss-server ] ; then
+    if [ -f /etc/init.d/shadowsocks* ] ; then
         echo -e "Shadowsocks installed"
     else
         rm -rf shadowsocks-install.sh
@@ -76,6 +76,13 @@ restart_service()
     fi
 }
 
+uninstall_shadowsocks()
+{
+        rm -rf ./shadowsocks-install.sh
+        wget --no-check-certificate ${GITURL}/setuptools/shadowsocks-install.sh >>$RELOADLOG 2>&1
+        chmod +x shadowsocks-install.sh
+        ./shadowsocks-install.sh uninstall
+}
 
 rm -rf $RELOADLOG
 rootness
