@@ -31,7 +31,7 @@ disable_selinux(){
 chkinstall_shadowsocks()
 {
     if [ -f /etc/init.d/shadowsocks* ] ; then
-        echo -e "Shadowsocks installed"
+        echo -e "${green}Shadowsocks installed${plain}"
     else
         rm -rf shadowsocks-install.sh
         wget --no-check-certificate ${GITURL}/setuptools/shadowsocks-install.sh >>$RELOADLOG 2>&1 &&
@@ -76,14 +76,6 @@ restart_service()
     fi
 }
 
-uninstall_shadowsocks()
-{
-        rm -rf ./shadowsocks-install.sh
-        wget --no-check-certificate ${GITURL}/setuptools/shadowsocks-install.sh >>$RELOADLOG 2>&1
-        chmod +x shadowsocks-install.sh
-        ./shadowsocks-install.sh uninstall
-}
-
 rm -rf $RELOADLOG
 rootness
 disable_selinux
@@ -91,16 +83,3 @@ chkinstall_shadowsocks
 chkinstall_serverspeeder
 optimized_shadowsocks
 restart_service
-
-# Initialization step
-action=$1
-[ -z $1 ] && action=install
-case "$action" in
-    install|uninstall)
-    ${action}_shadowsocks
-    ;;
-    *)
-    echo "Arguments error! [${action}]"
-    echo "Usage: `basename $0` [install|uninstall]"
-    ;;
-esac
