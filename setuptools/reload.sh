@@ -5,7 +5,6 @@ export PATH
 ##by:      Fish
 ##mailto:  fishdev@qq.com
 
-
 GITURL=https://raw.githubusercontent.com/FishDDev/tools/Privated
 RELOADLOG=/var/log/reload.log
 
@@ -53,15 +52,15 @@ chkinstall_serverspeeder()
 optimized_shadowsocks()
 {
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
-        echo -e "* soft nofile 51200\n* hard nofile 51200"
-        ulimit -n 51200
+        echo -e "* soft nofile 51200\n* hard nofile 51200" >> /etc/security/limits.conf
     fi
+    ulimit -n 51200
 }
 
 
 restart_service()
 {
-    if [ -f /usr/local/bin/ss-server ] ; then
+    if [ -f /etc/init.d/shadowsocks* ] ; then
         tools_shadowsocks
         echo "Restart Service: Shadowsocks"
         /etc/init.d/shadowsocks-libev restart
