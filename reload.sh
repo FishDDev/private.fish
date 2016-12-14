@@ -5,13 +5,18 @@ export PATH
 ##by:      Fish
 ##mailto:  fishdev@qq.com
 
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+plain='\033[0m'
+
 GITURL=https://raw.githubusercontent.com/FishDDev/tools/Privated
 RELOADLOG=/var/log/reload.log
 
 
 rootness(){
     if [[ $EUID -ne 0 ]]; then
-       echo "Error: This script must be run as root!" 1>&2
+       echo -e "${red}Error: This script must be run as root!${plain}" 1>&2
        exit 1
     fi
 }
@@ -26,26 +31,26 @@ disable_selinux(){
 chkinstall_shadowsocks()
 {
     if [ -f /usr/local/bin/ss-server ] ; then
-        echo "Shadowsocks installed"
+        echo -e "Shadowsocks installed"
     else
         rm -rf shadowsocks-install.sh
         wget --no-check-certificate ${GITURL}/setuptools/shadowsocks-install.sh >>$RELOADLOG 2>&1 &&
         ( chmod +x shadowsocks-install.sh ;
-        echo "done: Shadowsocks installation Script" ) ||
-        echo "failed: Shadowsocks installation Script"
+        echo -e "${green}done: Shadowsocks installation Script${plain}" ) ||
+        echo -e "${red}failed: Shadowsocks installation Script${plain}"
     fi
 }
 
 chkinstall_serverspeeder()
 {
     if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
-        echo "serverSpeeder installed"
+        echo -e "${green}serverSpeeder installed${plain}"
     else
         rm -rf *erverspeede*
         wget --no-check-certificate ${GITURL}/setuptools/serverspeeder.sh >>$RELOADLOG 2>&1  &&
         ( chmod +x serverspeeder.sh ;
-        echo "done: serverSpeeder installation Script" ) ||
-        echo "failed: serverSpeeder installation Script"
+        echo -e "${green}done: serverSpeeder installation Script${plain}" ) ||
+        echo -e "${red}failed: serverSpeeder installation Script${plain}"
     fi
 }
 
@@ -61,12 +66,12 @@ optimized_shadowsocks()
 restart_service()
 {
     if [ -f /etc/init.d/shadowsocks* ] ; then
-        echo "Restart Service: Shadowsocks"
+        echo -e "${red}Restart Service: Shadowsocks${plain}"
         /etc/init.d/shadowsocks-libev restart
     fi
     
     if [ -f /serverspeeder/bin/serverSpeeder.sh ] ; then
-        echo "Restart Service: serverSpeeder"
+        echo -e "${red}Restart Service: serverSpeeder${plain}"
         /serverspeeder/bin/serverSpeeder.sh restart
     fi
 }
