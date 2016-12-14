@@ -61,7 +61,6 @@ optimized_shadowsocks()
 restart_service()
 {
     if [ -f /etc/init.d/shadowsocks* ] ; then
-        tools_shadowsocks
         echo "Restart Service: Shadowsocks"
         /etc/init.d/shadowsocks-libev restart
     fi
