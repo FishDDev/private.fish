@@ -63,6 +63,7 @@ chkinstall_dep()
    
    mkdir -p /etc/fish
    touch /etc/fish/.dep
+   fi
 }
 
 chkinstall_shadowsocks()
