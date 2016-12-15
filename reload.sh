@@ -45,7 +45,22 @@ set_timezone()
     if ! grep -q "Asia/Shanghai" /etc/timezone; then
     echo "Asia/Shanghai" >/etc/timezone
     cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    mkdir -p /etc/fish
+    touch /etc/fish/.timezone
     fi
+}
+
+chkinstall_dep()
+{
+   if ! [ -f /etc/fish/.dep ] ; then
+   yum makecache fast
+   yum update -y
+   yum upgrade -y
+   yum install -y m2crypto libnet libpcap libnet-devel libpcap-devel net-tools python-pip libevent gzip openssl openssl-devel gcc swig python python-devel python-setuptools libtool libevent xmlto autoconf automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel asciidoc
+   pip install --upgrade -I pip
+   pip install -I greenlet gevent m2crypto
+   mkdir -p /etc/fish
+   touch /etc/fish/.dep
 }
 
 chkinstall_shadowsocks()
@@ -78,6 +93,8 @@ optimized_shadowsocks()
 {
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
         echo -e "* soft nofile 51200\n* hard nofile 51200" >> /etc/security/limits.conf
+    mkdir -p /etc/fish
+    touch /etc/fish/.limits
     fi
 }
 
