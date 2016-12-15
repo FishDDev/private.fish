@@ -79,8 +79,6 @@ optimized_shadowsocks()
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
         echo -e "* soft nofile 51200\n* hard nofile 51200" >> /etc/security/limits.conf
     fi
-
-    ulimit -SHn 51200
 }
 
 
