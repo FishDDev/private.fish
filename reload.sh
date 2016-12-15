@@ -44,7 +44,7 @@ set_timezone()
 {
     if ! grep -q "Asia/Shanghai" /etc/timezone; then
     echo "Asia/Shanghai" >/etc/timezone
-    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     fi
 }
 
