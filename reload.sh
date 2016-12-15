@@ -87,7 +87,7 @@ optimized_shadowsocks()
     ulimit -SHn 1024000
     
     if ! [ -f /etc/sysctl.d/local.conf ] ; then
-    cat > /etc/sysctl.d/local.conf<<-EOF
+    cat > /etc/sysctl.d/local.conf<-EOF
 #Google BBR
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
