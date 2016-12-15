@@ -53,6 +53,7 @@ set_timezone()
 chkinstall_dep()
 {
    if ! [ -f /etc/fish/.dep ] ; then
+   yum clean all
    yum makecache fast
    yum update -y
    yum upgrade -y
