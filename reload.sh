@@ -79,7 +79,17 @@ optimized_shadowsocks()
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
         echo -e "* soft nofile 512000\n* hard nofile 1024000" >> /etc/security/limits.conf
     fi
-    ulimit -n 65535
+    
+    if ! grep -q "ulimit -SHn 1024000" /etc/profile; then
+        echo -e "ulimit -SHn 1024000" >> /etc/profile
+    fi
+    
+    ulimit -SHn 1024000
+    
+    if ! grep -q "session required pam_limits.so" /etc/pam.d/common-session; then
+        echo -e "session required pam_limits.so" >> /etc/pam.d/common-session
+    fi
+    
     
     if ! [ -f /etc/sysctl.d/local.conf ] ; then
     cat > /etc/sysctl.d/local.conf<<-EOF
@@ -125,10 +135,22 @@ net.ipv4.tcp_mtu_probing = 1
 # forward ivp4
 net.ipv4.ip_forward = 1
 EOF
-    fi
     sysctl -p >>$relog 2>&1
     sysctl --system >>$relog 2>&1
     sysctl -p /etc/sysctl.d/local.conf >>$relog 2>&1
+    fi
+ 
+    
+    if ! [ -f /usr/local/.success] ; then
+    iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+    iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    sysctl -w net.ipv4.ip_forward=1
+    iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+    iptables -I INPUT -p udp --dport 443 -j ACCEPT
+    service iptables restart
+    mkdir -p /usr/local
+    touch /usr/local/.success
+    fi
 }
 
 
