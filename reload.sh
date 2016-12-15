@@ -123,5 +123,5 @@ set_timezone
 chkinstall_dep
 chkinstall_shadowsocks
 chkinstall_serverspeeder
-optimized_shadowsocks
+#optimized_shadowsocks
 restart_service
