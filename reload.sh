@@ -19,9 +19,6 @@ rclog="/etc/fish/re.log"
 giturl="https://raw.githubusercontent.com/FishDDev/tools/Privated/setuptools"
 #set serverspeeder bin url
 serverspeeder_init="/serverspeeder/bin/serverSpeeder.sh"
-#set libsodium build url
-libsodium_file="libsodium-1.0.11"
-libsodium_url="https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz"
 #set shadowsocks init url
 ss_init[0]="/etc/init.d/shadowsocks"
 ss_init[1]="/etc/init.d/shadowsocks-python"
@@ -34,7 +31,6 @@ for init in ${ss_init[@]}; do
     export ss_init=${init}
     fi
 done
-
 
 check_root(){
     if [[ $EUID -ne 0 ]]; then
@@ -123,6 +119,7 @@ restart_service()
 }
 
 
+#run shell
 check_root
 rm -rf ${rclog}
 disable_selinux
