@@ -86,6 +86,57 @@ optimized_shadowsocks()
 #Google BBR
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
+# 提高整个系统的文件限制
+# max open files
+fs.file-max = 51200
+# max read buffer
+net.core.rmem_max = 67108864
+# max write buffer
+net.core.wmem_max = 67108864
+# default read buffer
+net.core.rmem_default = 65536
+# default write buffer
+net.core.wmem_default = 65536
+# max processor input queue
+net.core.netdev_max_backlog = 4096
+# max backlog
+net.core.somaxconn = 4096
+
+# resist SYN flood attacks
+# 表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；
+net.ipv4.tcp_syncookies = 1
+# reuse timewait sockets when safe
+# 表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；
+net.ipv4.tcp_tw_reuse = 1
+# turn off fast timewait sockets recycling
+# 表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭；
+net.ipv4.tcp_tw_recycle = 1
+# short FIN timeout
+# 修改系統默认的 TIMEOUT 时间。
+net.ipv4.tcp_fin_timeout = 30
+# short keepalive time
+# 表示当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为20分钟。
+net.ipv4.tcp_keepalive_time = 1200
+# outbound port range
+# 表示用于向外连接的端口范围。缺省情况下很小：32768到61000，改为10000到65000。（注意：这里不要将最低值设的太低，否则可能会占用掉正常的端口！）
+net.ipv4.ip_local_port_range = 10000 65000
+# max SYN backlog
+# 表示SYN队列的长度，默认为1024，加大队列长度为8192，可以容纳更多等待连接的网络连接数。
+net.ipv4.tcp_max_syn_backlog = 4096
+# max timewait sockets held by system simultaneously
+# 表示系统同时保持TIME_WAIT的最大数量，如果超过这个数字，TIME_WAIT将立刻被清除并打印警告信息。
+net.ipv4.tcp_max_tw_buckets = 5000
+
+# TCP receive buffer
+net.ipv4.tcp_rmem = 4096 87380 67108864
+# TCP write buffer
+net.ipv4.tcp_wmem = 4096 65536 67108864
+# turn on path MTU discovery
+net.ipv4.tcp_mtu_probing = 1
+
+# turn on TCP Fast Open on both client and server side
+# 对于内核版本新于**3.7.1**的，我们可以开启tcp_fastopen：
+net.ipv4.tcp_fastopen = 3
 EOF
     fi
     sysctl -p >>$relog 2>&1
