@@ -69,7 +69,7 @@ chkinstall_dep()
 chkinstall_shadowsocks()
 {
     if [ -f ${ss_init} ] ; then
-        echo -e "${green}Shadowsocks installed${plain}"
+        echo -e "${yellow}Shadowsocks installed${plain}"
     else
         rm -rf ./shadowsocks-install.*
         wget --no-check-certificate ${giturl}/shadowsocks-install.sh >>$relog 2>&1 &&
@@ -82,7 +82,7 @@ chkinstall_shadowsocks()
 chkinstall_serverspeeder()
 {
     if [ -f ${serverspeeder_init} ] ; then
-        echo -e "${green}serverSpeeder installed${plain}"
+        echo -e "${yellow}serverSpeeder installed${plain}"
     else
         rm -rf ./serverspeeder.*
         wget --no-check-certificate ${giturl}/serverspeeder.sh >>$relog 2>&1  &&
