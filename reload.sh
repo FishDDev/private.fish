@@ -86,11 +86,6 @@ optimized_shadowsocks()
     
     ulimit -SHn 1024000
     
-    if ! grep -q "session required pam_limits.so" /etc/pam.d/common-session; then
-        echo -e "session required pam_limits.so" >> /etc/pam.d/common-session
-    fi
-    
-    
     if ! [ -f /etc/sysctl.d/local.conf ] ; then
     cat > /etc/sysctl.d/local.conf<<-EOF
 #Google BBR
@@ -138,18 +133,6 @@ EOF
     sysctl -p >>$relog 2>&1
     sysctl --system >>$relog 2>&1
     sysctl -p /etc/sysctl.d/local.conf >>$relog 2>&1
-    fi
- 
-    
-    if ! [ -f /usr/local/.success] ; then
-    iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
-    iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-    sysctl -w net.ipv4.ip_forward=1
-    iptables -I INPUT -p tcp --dport 443 -j ACCEPT
-    iptables -I INPUT -p udp --dport 443 -j ACCEPT
-    service iptables restart
-    mkdir -p /usr/local
-    touch /usr/local/.success
     fi
 }
 
