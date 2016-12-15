@@ -77,9 +77,9 @@ chkinstall_serverspeeder()
 optimized_shadowsocks()
 {
     if ! grep -q "* soft nofile" /etc/security/limits.conf; then
-        echo -e "* soft nofile 65535\n* hard nofile 65535" >> /etc/security/limits.conf
+        echo -e "* soft nofile 51200\n* hard nofile 51200" >> /etc/security/limits.conf
     fi
-    ulimit -n 65535
+    ulimit -n 51200
     
     if ! [ -f /etc/sysctl.d/local.conf ] ; then
     cat > /etc/sysctl.d/local.conf<<-EOF
