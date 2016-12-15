@@ -56,7 +56,7 @@ chkinstall_dep()
    yum makecache fast
    yum update -y
    yum upgrade -y
-   yum install -y m2crypto libnet libpcap libnet-devel libpcap-devel net-tools python-pip libevent gzip openssl openssl-devel gcc swig python python-devel python-setuptools libtool libevent xmlto autoconf automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel asciidoc
+   yum install -y m2crypto libnet libpcap libnet-devel libpcap-devel net-tools python-pip libevent gzip openssl openssl-devel gcc swig python python-devel python-setuptools libtool libevent xmlto autoconf automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel asciidoc unzip
    pip install --upgrade -I pip
    pip install -I greenlet gevent m2crypto
    
