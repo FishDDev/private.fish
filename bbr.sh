@@ -123,7 +123,7 @@ install_config() {
                 exit 1
             fi
             sed -i 's/^default=.*/default=0/g' /boot/grub/grub.conf
-            if wget -c -t3 -T60 -O ${sysctl_url} -O /etc/sysctl.conf; then
+            if wget "${sysctl_url}" -O "/etc/sysctl.conf" >/dev/null 2>&1; then
             sysctl -p >/dev/null 2>&1
             else
                 echo -e "${red}Error:${plain} Failed to download ${sysctl_conf}"
@@ -134,7 +134,7 @@ install_config() {
                 exit 1
             fi
             grub2-set-default 0
-            if wget -c -t3 -T60 -O ${sysctl_url} -O /etc/sysctl.conf; then
+            if wget "${sysctl_url}" -O "/etc/sysctl.conf" >/dev/null 2>&1; then
             sysctl -p >/dev/null 2>&1
             else
                 echo -e "${red}Error:${plain} Failed to download ${sysctl_conf}"
@@ -142,7 +142,7 @@ install_config() {
         fi
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
         update-grub
-            if wget -c -t3 -T60 -O ${sysctl_url} -O /etc/sysctl.conf; then
+            if wget "${sysctl_url}" -O "/etc/sysctl.conf" >/dev/null 2>&1; then
             sysctl -p >/dev/null 2>&1
             else
                 echo -e "${red}Error:${plain} Failed to download ${sysctl_conf}"
@@ -197,7 +197,7 @@ char=`get_char`
 install_bbr
 
 echo
-read -p "Info: The system needs to be restart. Do you want to reboot? [y/n]" is_reboot
+read -p "Info: Do you want to reboot? [y/n]" is_reboot
 if [[ ${is_reboot} == "y" || ${is_reboot} == "Y" ]]; then
     reboot
 else
