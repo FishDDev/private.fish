@@ -195,6 +195,7 @@ echo "Press any key to start...or Press Ctrl+C to cancel"
 char=`get_char`
 
 install_bbr
+yum install -y deltarpm >/dev/null 2>&1
 
 echo
 read -p "Info: Do you want to reboot? [y/n]" is_reboot
