@@ -16,7 +16,7 @@ mkdir -p /etc/fish
 #set log url
 rclog="/etc/fish/re.log"
 #set git url
-giturl="https://raw.githubusercontent.com/FishDDev/tools/Privated/setuptools"
+giturl="https://raw.githubusercontent.com/FishDDev/tools/Privated/shadowsocks-tools"
 #set serverspeeder bin url
 serverspeeder_init="/serverspeeder/bin/serverSpeeder.sh"
 #set shadowsocks init url
